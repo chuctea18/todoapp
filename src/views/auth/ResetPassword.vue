@@ -1,45 +1,25 @@
 <template>
   <div class="vue-template">
     <form class="form-center" @submit.prevent="fakeLogin">
-      <h1>Sign In.</h1>
+      <h1>Reset Password.</h1>
 
       <div class="form-group">
-        <button>
-          <a href="#"
-            ><i class="fa-brands fa-google icon"></i>Continue with Facebook</a
-          >
-        </button>
+        <input v-model="password" type="password" placeholder="New Password" />
       </div>
       <div class="form-group">
-        <!-- S -->
-        <button>
-          <a href="#"
-            ><i class="fa-brands fa-facebook icon"></i>Continue with Facebook</a
-          >
-        </button>
-      </div>
-
-      <div class="form-group">
-        <input v-model="email" type="email" placeholder="Email" />
-        <p>{{ email }}</p>
-      </div>
-
-      <div class="form-group">
-        <input v-model="password" type="password" placeholder="Password" />
-        <p>{{ password }}</p>
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Confirm Password"
+        />
       </div>
 
       <button type="submit" class="btn btn-dark btn-lg btn-block">
-        SIGN IN
+        RESET PASSWORD
       </button>
 
-      <p class="forgot-password text-center mt-2">
-        Not have an account?
-        <router-link to="/signup">Create Account</router-link>
-      </p>
-
       <p class="forgot-password text-center mt-2 mb-4">
-        <router-link to="/forgot-password">Forgot password?</router-link>
+        <router-link to="/">Back to signin</router-link>
       </p>
     </form>
   </div>

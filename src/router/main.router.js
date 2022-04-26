@@ -1,19 +1,19 @@
-
+import HomeView from '../views/main/HomeView.vue'
+import ListTask from '../views/main/ListTask.vue'
 
 
 const mainRoutes = [
     {
-        path: '/',
+        path: '/home',
         name: 'home',
-        component: () => import(/* webpackChunkName: "about" */ '../views/main/HomeView.vue')
+        component: HomeView
 
     },
-    // {
-    //     path: '/list-task',
-    //     name: 'list-task',
-    //     component: () => import(/* webpackChunkName: "about" */ '../views/main/ListTask.vue')
-
-    // },
+    {
+        path: '/list-task',
+        name: 'list-task',
+        component: ListTask
+    },
 
 ]
 

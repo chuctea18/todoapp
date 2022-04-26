@@ -12,7 +12,7 @@
       </div>
       <div class="right">
         <button class="avatar-btn">
-          <img src="../assets/img/hình-mèo-cute-tâm-trạng.jpg" alt="" />
+          <!-- <img src="../assets/img/hình-mèo-cute-tâm-trạng.jpg" alt="" /> -->
         </button>
       </div>
     </div>

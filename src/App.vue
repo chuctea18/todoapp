@@ -1,13 +1,16 @@
 <template>
   <!-- Main -->
-  <div class="App">
-    <div class="vertical-center">
-      <router-view />
-    </div>
+  <div>
+    <router-view />
   </div>
 </template>
 
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+}
 nav {
   padding: 30px;
 }

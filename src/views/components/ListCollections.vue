@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <!-- <header>
     <div class="header">
       <div class="left">
         <a href="#" class="title">
@@ -17,9 +17,9 @@
         </button>
       </div>
     </div>
-  </header>
+  </header> -->
 
-  <section class="container">
+  <!-- <section class="container">
     <div class="wrap">
       <div class="top">
         <h3>Collection</h3>
@@ -28,7 +28,25 @@
         ></a>
       </div>
     </div>
-  </section>
+  </section> -->
+
+  <div class="container">
+    <h3>Collections</h3>
+    <div>
+      <button>Favorites</button>
+      <button>All Colections</button>
+    </div>
+    <div>
+      <div class="box">
+        <span><i class="fa-solid fa-book-open"></i></span>
+        <h3>School</h3>
+        <div>
+          <p>4/8 done</p>
+          <span><i class="fa-regular fa-spinner-third"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

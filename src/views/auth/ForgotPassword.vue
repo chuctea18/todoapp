@@ -1,45 +1,19 @@
 <template>
   <div class="vue-template">
-    <form class="form-center" @submit.prevent="fakeLogin">
-      <h1>Sign In.</h1>
-
-      <div class="form-group">
-        <button>
-          <a href="#"
-            ><i class="fa-brands fa-google icon"></i>Continue with Facebook</a
-          >
-        </button>
-      </div>
-      <div class="form-group">
-        <!-- S -->
-        <button>
-          <a href="#"
-            ><i class="fa-brands fa-facebook icon"></i>Continue with Facebook</a
-          >
-        </button>
-      </div>
+    <form class="form-center" @submit.prevent="fakeResetPassword">
+      <h1>Forgot Your Password?</h1>
 
       <div class="form-group">
         <input v-model="email" type="email" placeholder="Email" />
         <p>{{ email }}</p>
       </div>
 
-      <div class="form-group">
-        <input v-model="password" type="password" placeholder="Password" />
-        <p>{{ password }}</p>
-      </div>
-
       <button type="submit" class="btn btn-dark btn-lg btn-block">
-        SIGN IN
+        RESET PASSWORD
       </button>
 
-      <p class="forgot-password text-center mt-2">
-        Not have an account?
-        <router-link to="/signup">Create Account</router-link>
-      </p>
-
       <p class="forgot-password text-center mt-2 mb-4">
-        <router-link to="/forgot-password">Forgot password?</router-link>
+        <router-link to="/">Back to signin</router-link>
       </p>
     </form>
   </div>
@@ -76,8 +50,8 @@ export default {
         .catch((err) => this.$vToastify.error(err));
     },
 
-    fakeLogin() {
-      this.$router.push("/main");
+    fakeResetPassword() {
+      this.$router.push("/reset-password");
     },
   },
 };

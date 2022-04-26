@@ -1,10 +1,5 @@
 <template>
-  <nav>
-    <router-link to="/signin">SignIn</router-link> |
-    <router-link to="/">CollectionView</router-link> |
-    <router-link to="/list-collection">ListCollection</router-link> |
-    <!-- <router-link to="/signup">SignUp</router-link> -->
-  </nav>
+  <h1>home works!</h1>
 </template>
 
 <script>
