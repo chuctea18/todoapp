@@ -69,6 +69,25 @@ export default {
     ],
   }),
   methods: {
+    login: () => {
+      AuthService.login({
+        email: this.email,
+        password: this.password,
+      })
+        .then((response) => {
+          if (!response?.data) {
+            return;
+          }
+          const { accessToken } = response.data;
+          if (accessToken) {
+            localStorage.setItem("ACCESS_TOKEN", JSON.stringify(accessToken));
+          }
+          this.$vToastify.success("easy-peasy");
+          this.$router.push("/");
+        })
+        .catch((err) => this.$vToastify.error(err));
+    },
+
     submitHandler() {
       if (this.$refs.form.validate()) {
         this.loading = true;
