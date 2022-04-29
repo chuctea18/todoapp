@@ -1,6 +1,6 @@
 <template>
   <div class="vue-template">
-    <form class="form-center" @submit.prevent="fakeLogin">
+    <form class="form-center" @submit.prevent="login">
       <h1>Sign In.</h1>
 
       <div class="form-group">
@@ -46,9 +46,7 @@
 </template>
 
 <script>
-// import AuthService from "@/services/AuthService.js";
-import axios from "axios";
-const url = "http://localhost:5000";
+import AuthService from "@/services/auth.service";
 
 export default {
   data() {
@@ -60,24 +58,22 @@ export default {
   },
   methods: {
     login: () => {
-      axios
-        .post(`${url}/login`, {
-          email: this.email,
-          password: this.password,
-        })
+      AuthService.login({
+        email: this.email,
+        password: this.password,
+      })
         .then((response) => {
-          // if (response.data.accessToken) {
-          //   localStorage.setItem('user', JSON.stringify(response.data));
-          // }
-          // this.$vToastify.success("easy-peasy");
+          if (!response?.data) {
+            return;
+          }
+          const { accessToken } = response.data;
+          if (accessToken) {
+            localStorage.setItem("ACCESS_TOKEN", JSON.stringify(accessToken));
+          }
+          this.$vToastify.success("easy-peasy");
           this.$router.push("/");
-          return response.data;
         })
         .catch((err) => this.$vToastify.error(err));
-    },
-
-    fakeLogin() {
-      this.$router.push("/main");
     },
   },
 };
