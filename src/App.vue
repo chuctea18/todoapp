@@ -1,26 +1,18 @@
 <template>
-  <!-- Main -->
-  <div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  min-height: 100vh;
-}
-nav {
-  padding: 30px;
-}
+<script>
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
 
-nav a.router-link-exact-active {
-  color: #42b983;
+  data: () => ({
+    //
+  }),
 }
-</style>
+</script>
