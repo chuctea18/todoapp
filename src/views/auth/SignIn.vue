@@ -1,114 +1,178 @@
 <template>
-  <v-app>
-    <div class="backgruond"></div>
-    <v-main class="d-flex justify-center align-center">
-      <v-col cols="10" lg="4" class="mx-auto">
-        <v-card class="pa-4">
-          <div class="text-center">
-            <v-avatar size="100" color="indigo lighten-4">
-              <v-icon size="40" color="indigo">mdi-account</v-icon>
-            </v-avatar>
-            <h2 class="indigo--text">Vue login Page</h2>
-          </div>
-          <v-form @submit.prevent="submitHandler" ref="form">
-            <v-card-text>
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                type="email"
-                label="Email"
-                placeholder="Email"
-                prepend-inner-icon="mdi-account"
-                required
-              />
-              <v-text-field
-                v-model="password"
-                :rules="passwordRules"
-                :type="passwordShow ? 'text' : 'password'"
-                label="Password"
-                placeholder="Password"
-                prepend-inner-icon="mdi-key"
-                :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="passwordShow = !passwordShow"
-                required
-              />
-              <v-switch label="Remember me" color="indigo"></v-switch>
-            </v-card-text>
-            <v-card-actions class="justify-center">
-              <v-btn :loading="loading" type="submit" color="indigo">
-                <span class="white--text px-8">Login</span>
-              </v-btn>
-            </v-card-actions>
-          </v-form>
-        </v-card>
-      </v-col>
-    </v-main>
-    <v-snackbar top color="green" v-model="snackbar">
-      Login success
-    </v-snackbar>
-  </v-app>
+  <div class="vue-template">
+    <h1>Sign In.</h1>
+    <form class="form-center" @submit.prevent="login">
+      <div class="form-group">
+        <button>
+          <a href="#"
+            ><i class="fa-brands fa-google icon"></i>Continue with Facebook</a
+          >
+        </button>
+      </div>
+      <div class="form-group">
+        <!-- S -->
+        <button>
+          <a href="#"
+            ><i class="fa-brands fa-facebook icon"></i>Continue with Facebook</a
+          >
+        </button>
+      </div>
+
+      <div class="form-group">
+        <input v-model="email" type="email" placeholder="Email" />
+        <!-- <p>{{ email }}</p> -->
+      </div>
+
+      <div class="form-group">
+        <input v-model="password" type="password" placeholder="Password" />
+        <!-- <p>{{ password }}</p> -->
+      </div>
+
+      <button type="submit" class="btn btn-dark btn-lg btn-block">
+        SIGN IN
+      </button>
+
+      <p class="forgot-password text-center mt-2">
+        Not have an account?
+        <router-link to="/signup">Create Account</router-link>
+      </p>
+
+      <p class="forgot-password text-center mt-2 mb-4">
+        <router-link to="/forgot-password">Forgot password?</router-link>
+      </p>
+    </form>
+  </div>
 </template>
 
 <script>
-export default {
-  name: "App",
+// import AuthService from "@/services/auth.service";
+// import axios from "axios";
+// const url = "http://localhost:5000";
 
-  data: () => ({
-    loading: false,
-    snackbar: false,
-    passwordShow: false,
-    email: "",
-    emailRules: [
-      (v) => !!v || "E-mail is required",
-      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-    ],
-    password: "",
-    passwordRules: [
-      (v) => !!v || "Password is required",
-      (v) => (v && v.length >= 6) || "Password must be 6  characters or more!",
-    ],
-  }),
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  created() {
+    console.log(this.email);
+  },
   methods: {
     login: () => {
-      AuthService.login({
-        email: this.email,
-        password: this.password,
-      })
-        .then((response) => {
-          if (!response?.data) {
-            return;
-          }
-          const { accessToken } = response.data;
-          if (accessToken) {
-            localStorage.setItem("ACCESS_TOKEN", JSON.stringify(accessToken));
-          }
-          this.$vToastify.success("easy-peasy");
-          this.$router.push("/");
-        })
-        .catch((err) => this.$vToastify.error(err));
+      // AuthService.login({
+      //   email: this.email,
+      //   password: this.password,
+      // })
+      //   .then((response) => {
+      //     if (!response?.data) {
+      //       return;
+      //     }
+      //     const { accessToken } = response.data;
+      //     console.log(accessToken);
+      //     if (accessToken) {
+      //       localStorage.setItem("ACCESS_TOKEN", JSON.stringify(accessToken));
+      //     }
+      //     this.$vToastify.success("easy-peasy");
+      //     this.$router.push("/main");
+      //   })
+      //   .catch((err) => this.$vToastify.error(err));
     },
 
-    submitHandler() {
-      if (this.$refs.form.validate()) {
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-          this.snackbar = true;
-        }, 3000);
-      }
+    fakeLogin() {
+      this.$router.push("/main");
     },
   },
 };
 </script>
-<style>
-.background {
-  /* background-image: url(./assets/Order-Banner.jpg) !important; */
-  background: #fff !important;
-  height: 300px;
-  width: 100%;
-  display: block;
-  position: absolute;
-  top: 0;
-  background-size: cover;
+
+<style lang="scss" scoped>
+@import "../../assets/main.css";
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+.container {
+  background-color: rgb(32, 30, 32);
+  /* height: 100vh; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+h1 {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+input,
+button {
+  width: 300px;
+  padding: 10px;
+  color: #fff;
+
+  box-sizing: border-box;
+  border: 3px solid #444140;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: rgb(32, 30, 32);
+  margin-bottom: 15px;
+}
+
+button a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #ddd;
+  opacity: 1;
+}
+
+button[type="submit"] {
+  background-color: #f08080;
+  border: 0;
+  padding: 15px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.forgot-password {
+  text-align: right;
+  font-size: 16px;
+  padding-top: 10px;
+  color: #7a7a7a;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #fff;
 }
 </style>
