@@ -64,8 +64,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/main.css";
-
 html,
 body,
 div,

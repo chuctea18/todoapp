@@ -21,7 +21,7 @@
         <i class="fa-regular fa-bell" style="font-size: 18px"></i>
       </button>
       <button class="avatar-btn">
-        <img src="../../assets/img/hình-mèo-cute-tâm-trạng.jpg" alt="" />
+        <img src="" alt="" />
       </button>
     </div>
   </nav>
